@@ -1,0 +1,17 @@
+from telegram.ext import Updater, CommandHandler
+
+# Define a function to handle the /start command
+def start(update, context):
+    context.bot.send_message(chat_id=update.effective_chat.id, text="Hello! I'm your bot.")
+    
+# Set up the bot
+updater = Updater('2140064925:AAEc4upO3g46IGQ_AlrL5w2zq9OtVGV0hNA', use_context=True)
+dispatcher = updater.dispatcher
+
+# Add the CommandHandler for the /start command
+start_handler = CommandHandler('start', start)
+dispatcher.add_handler(start_handler)
+
+# Start the bot
+updater.start_polling()
+updater.idle()
